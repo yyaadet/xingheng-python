@@ -1,0 +1,8 @@
+[tools.py2app.bundle.main]
+script = "app.py"
+semi-standalone = true
+
+strip = false
+
+name = "行恒"
+
