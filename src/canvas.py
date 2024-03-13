@@ -59,7 +59,7 @@ class Canvas(wx.Panel):
             font = wx.Font(int(font_size), wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
             gc.SetFont(font, wx.WHITE)
             text_width, text_height = dc.GetTextExtent(self.title)
-            if text_width > w *0.6:
+            if text_width > w *0.8:
                 font_size = 0.9 * font_size
             else:
                 break

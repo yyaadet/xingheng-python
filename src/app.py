@@ -146,7 +146,10 @@ class MainFrame(BaseFrame):
                 project=item['project'],
                 opening_tomato_id=item['opening_tomato_id'],
                 opening_tomato_left_seconds=item['opening_tomato_left_seconds'],
-                last_update_datetime=item['last_update_datetime']
+                last_update_datetime=item['last_update_datetime'],
+                tomato_number=item['tomato_number'],
+                expect_tomato_number=item['expect_tomato_number'],
+                dead_datetime=item['dead_datetime']
             )
             tasks.append(task)
         return tasks
@@ -166,9 +169,10 @@ class MainFrame(BaseFrame):
         root = self.tree_ctrl.RootItem
 
         for task in self.tasks:
-            title = task.title
             if task.opening_tomato_id > 0:
-                title = f"{task.title} - 开番{self.format_seconds(task.opening_tomato_left_seconds)}"
+                title = f"{task.title}: {task.tomato_number}/{task.expect_tomato_number}🍅 - 开番{self.format_seconds(task.opening_tomato_left_seconds)}"
+            else:
+                title = f"{task.title}: {task.tomato_number}/{task.expect_tomato_number}🍅，{task.dead_datetime}截止"
             item = self.tree_ctrl.AppendItem(root, title, data=task.id)
             if selected_task and selected_task.id == task.id:
                 self.tree_ctrl.SelectItem(item)

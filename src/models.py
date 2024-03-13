@@ -11,6 +11,9 @@ class Task:
     opening_tomato_id: int = -1
     opening_tomato_left_seconds: int = 0
     last_update_datetime: str = ''
+    dead_datetime: str = ""
+    expect_tomato_number: int = 0
+    tomato_number: int = 0
 
 
 @dataclass
