@@ -20,6 +20,7 @@ class BaseFrame(wx.Frame):
         self.token = ""
         self.uid = -1
         self.status_bar: wx.StatusBar = self.CreateStatusBar()
+        self.media_player = wx.media.MediaCtrl(self)
 
         self.initial_token()
 
@@ -82,3 +83,11 @@ class BaseFrame(wx.Frame):
         if self.token:
             return True
         return False
+    
+    def play_music(self, path):
+        # play mp3
+        if not self.media_player.Load(path):
+            self.set_error_tips(f"加载文件{path}失败")
+        else:
+            self.media_player.SetInitialSize()
+            self.media_player.Play()

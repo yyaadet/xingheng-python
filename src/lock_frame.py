@@ -26,7 +26,6 @@ class LockFrame(BaseFrame):
         self.quit_timer = wx.Timer(self)
 
         box = wx.BoxSizer(orient=wx.VERTICAL)
-        self.media_player = wx.media.MediaCtrl(self)
         self.canvas = Canvas(self, self.countdown_seconds, self.BG_COLOR, "离开电脑，走动走动")
         self.canvas.SetMinSize(self.Parent.lock_frame_size)
         box.Add(self.canvas, wx.EXPAND)
@@ -82,14 +81,6 @@ class LockFrame(BaseFrame):
         self.SetTitle(f"{self.task.title} - 休息倒计时 {self.format_seconds(self.countdown_seconds)}")
         self.canvas.update(self.countdown_seconds)
 
-    def play_music(self, path):
-        # play mp3
-        if not self.media_player.Load(path):
-            self.set_error_tips(f"加载文件{path}失败")
-        else:
-            self.media_player.SetInitialSize()
-            self.media_player.Play()
-    
     def get_user_info(self) -> Optional[User]:
         url = self.pack_url("/mobile/user/info/")
         params = {

@@ -28,6 +28,7 @@ SERVER_HOST = "www.51zhi.com"
 
 TOMATO_DONE_MP3 = BASE_DIR / "resources/mp3" / "tomato_done.mp3"
 REST_DONE_MP3 = BASE_DIR / "resources/mp3" / "rest_done.mp3"
+TOMATO_START_MP3 = BASE_DIR / "resources/mp3" / "horse.caf"
 
 APP_BUILD = 202401
 APP_PLATFORM = platform.uname().system

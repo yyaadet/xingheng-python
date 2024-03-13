@@ -287,7 +287,9 @@ class MainFrame(BaseFrame):
         if task.opening_tomato_id <= 0:
             tomato_id = self.create_tomato(task)
             task.opening_tomato_id = tomato_id
-            self.start_tomato(task)
+            resp = self.start_tomato(task)
+            if resp['is_ok']:
+                self.play_music(str(settings.TOMATO_START_MP3))
         else:
             if task.opening_tomato_left_seconds > 0: 
                 abandon_count = self.abandon_tomato(task)
